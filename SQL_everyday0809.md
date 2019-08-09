@@ -30,11 +30,18 @@ ORDER BY rating DESC;
 
 - [197. Rising Temperature](https://leetcode.com/problems/rising-temperature/)
 ```SQL
-# Write your MySQL query statement below
+# DATEDIFF 활용
 SELECT today.id
 FROM Weather AS today
   INNER JOIN Weather As yesterday ON DATEDIFF(today.RecordDate, yesterday.RecordDate) = 1
      AND yesterday.Temperature < today.Temperature ;
+```
+```SQL
+# DATE_ADD(날짜, INTERVAL 1 DAY) 활용
+SELECT w2.id AS id
+FROM Weather AS w1, Weather AS w2
+WHERE w2.recordDate = DATE_ADD(w1.recordDate, INTERVAL 1 DAY)
+AND w1.Temperature < w2.Temperature
 ```
 -----------------------------------------
 
