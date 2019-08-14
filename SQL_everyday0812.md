@@ -29,3 +29,5 @@ WHERE month * salary =
       FROM Employee)
 GROUP BY months * salary 
 ```
+---------------------------------
+
