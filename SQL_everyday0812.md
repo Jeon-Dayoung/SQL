@@ -21,3 +21,11 @@ GROUP BY earnings
 ORDER BY earnings DESC
 LIMIT 1;
 ```
+```python
+SELECT MAX(salary * months) , COUNT(employee_id)
+FROM Employee
+WHERE month * salary =
+     (SELECT MAX(month * salary)
+      FROM Employee)
+GROUP BY months * salary 
+```
