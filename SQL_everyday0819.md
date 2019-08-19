@@ -52,10 +52,17 @@ order by total_score desc, h.hacker_id
 - [Symmetric Pairs](https://www.hackerrank.com/challenges/symmetric-pairs/problem?h_r=internal-search)
 
 ```SQL
-SELECT f1.X, f1.Y
-FROM Functions AS f1
-  INNER JOIN Functions f2 ON f1.X=f2.Y AND f1.Y=f2.X
-GROUP BY f1.X, f1.Y
-HAVING COUNT(f1.X)>1 or f1.X<f1.Y
-ORDER BY f1.X 
+(select f1.x as x, f1.y as y
+from Functions as f1
+join Functions as f2
+where f1.x = f2.y and f1.y = f2.x and f1.x != f1.y and f1.x < f1.y)
+
+union
+
+(select x as x, y
+from Functions as f1
+group by x, y
+having count(*) > 1)
+order by x asc
 ```
+-------------------------------------
